@@ -16,21 +16,31 @@ Popsicle是一款基于Qt的简易局域网安全通信工具，内容加密采�
 
 ## 所用工具
  [Qt 5.13.0](https://www.qt.io "Qt 5.13.0")
+ 
  [Visual Studio 2019](https://visualstudio.microsoft.com/zh-hans/vs/ "Visual Studio 2019")
+ 
  [mpir](http://mpir.org/ "mpir")
+ 
  [ReSharper C++](https://www.jetbrains.com/resharper-cpp/ "ReSharper C++")
 
 ## 参考代码
 [JieweiWei/md5](https://github.com/JieweiWei/md5 "JieweiWei/md5") ：md5算法
+
 [Liu233w/natchat](https://github.com/Liu233w/natchat "Liu233w/natchat") ：移植网络模块
+
 [lowbees/WindowsFramelessWindowHelper](https://github.com/lowbees/WindowsFramelessWindowHelper "lowbees/WindowsFramelessWindowHelper") ：Qt无边窗口
+
 [laserpants/qt-material-widgets](https://github.com/laserpants/qt-material-widgets "laserpants/qt-material-widgets") ：Qt Material 界面组件
 
 ## 编译运行注意事项
 首次编译请先编译components
+
 建议通过vcpkg为VS安装mpir
+
 DH密钥和RSA密钥储存在应用程序同级目录，命名为dh.key和rsa.key
+
 **双方通信需要相同的dh.key**
+
 应用程序需要dh.key才能正常启动，如没有可先编译运行DH Generator生成，rsa密钥启动时自动生成或在应用内更新
 
 ## 未来
@@ -38,6 +48,9 @@ DH密钥和RSA密钥储存在应用程序同级目录，命名为dh.key和rsa.ke
 **~~不太可能继续更新，但要解决的问题还是要列出来~~**
 
 将基于Windows API的网络组件迁移到QtNetwork，以便于多平台使用
+
 文件发送接收重写，为了避免一些无法解决的问题并没有设计接收前的确认环节
+
 重新设计界面以及各类逻辑
+
 修正各种乱七八糟的signal和slot
