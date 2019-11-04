@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/res"/>
+    <qresource prefix="/">
+        <file>res/button.qss</file>
+        <file>res/close-button1.png</file>
+        <file>res/close-button2.png</file>
+        <file>res/maximize-button1.png</file>
+        <file>res/maximize-button2.png</file>
+        <file>res/minimize-button1.png</file>
+        <file>res/extra/close-button1.png</file>
+        <file>res/extra/close-button2.png</file>
+        <file>res/extra/maximize-button1.png</file>
+        <file>res/extra/maximize-button2.png</file>
+        <file>res/extra/minimize-button1.png</file>
+        <file>res/temp.png</file>
+        <file>res/extra/settings-button1.png</file>
+        <file>res/popsicle.ico</file>
+        <file>res/About.html</file>
+        <file>res/refresh.svg</file>
+        <file>res/send.svg</file>
+        <file>res/send-lock.svg</file>
+        <file>res/file-send.svg</file>
+    </qresource>
+    <qresource prefix="/res/extra"/>
+</RCC>

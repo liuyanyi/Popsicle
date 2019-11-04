@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\security">
+      <UniqueIdentifier>{9a5a28c1-6d0a-4d74-89bf-01ee780f91e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\network">
+      <UniqueIdentifier>{48d734f3-c00d-48f8-b44d-033b3e8c9d76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FramelessWindow">
+      <UniqueIdentifier>{84811231-805d-4285-b2e5-c9770725f8c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\network">
+      <UniqueIdentifier>{e6586df2-e7e1-471e-9cff-0d4870c15d0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\security">
+      <UniqueIdentifier>{836dfa72-4259-4016-802d-83fb37c96484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FramelessWindow">
+      <UniqueIdentifier>{12d69c0d-61c8-4a34-a0d4-ff9b31ce1194}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="security\aes.cpp">
+      <Filter>Source Files\security</Filter>
+    </ClCompile>
+    <ClCompile Include="security\controller.cpp">
+      <Filter>Source Files\security</Filter>
+    </ClCompile>
+    <ClCompile Include="security\MD5.cpp">
+      <Filter>Source Files\security</Filter>
+    </ClCompile>
+    <ClCompile Include="security\rsa.cpp">
+      <Filter>Source Files\security</Filter>
+    </ClCompile>
+    <ClCompile Include="security\Util.cpp">
+      <Filter>Source Files\security</Filter>
+    </ClCompile>
+    <ClCompile Include="network\ChatService.cpp">
+      <Filter>Source Files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="network\ConcurrentSender.cpp">
+      <Filter>Source Files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="network\File.cpp">
+      <Filter>Source Files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="network\netsignal.cpp">
+      <Filter>Source Files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="network\netutil.cpp">
+      <Filter>Source Files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="network\ReceivingManager.cpp">
+      <Filter>Source Files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="network\SendingManager.cpp">
+      <Filter>Source Files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="network\TicToc.cpp">
+      <Filter>Source Files\network</Filter>
+    </ClCompile>
+    <ClCompile Include="FramelessHelper\FramelessHelper.cpp">
+      <Filter>Source Files\FramelessWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="FramelessHelper\Kernels\NativeWindowFilter.cpp">
+      <Filter>Source Files\FramelessWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="FramelessHelper\Kernels\NativeWindowHelper.cpp">
+      <Filter>Source Files\FramelessWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="AboutWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="mainwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="resource.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="security\aes.h">
+      <Filter>Header Files\security</Filter>
+    </ClInclude>
+    <ClInclude Include="security\controller.h">
+      <Filter>Header Files\security</Filter>
+    </ClInclude>
+    <ClInclude Include="security\MD5.h">
+      <Filter>Header Files\security</Filter>
+    </ClInclude>
+    <ClInclude Include="security\rsa.h">
+      <Filter>Header Files\security</Filter>
+    </ClInclude>
+    <ClInclude Include="security\Util.h">
+      <Filter>Header Files\security</Filter>
+    </ClInclude>
+    <ClInclude Include="network\ChatService.h">
+      <Filter>Header Files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="network\ConcurrentSender.h">
+      <Filter>Header Files\network</Filter>
+    </ClInclude>
+    <QtMoc Include="network\netsignal.h">
+      <Filter>Header Files\network</Filter>
+    </QtMoc>
+    <ClInclude Include="FramelessHelper\FramelessHelper_p.h">
+      <Filter>Header Files\FramelessWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="FramelessHelper\Kernels\NativeWindowFilter.h">
+      <Filter>Header Files\FramelessWindow</Filter>
+    </ClInclude>
+    <QtMoc Include="AboutWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="mainwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="AboutWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\button.qss">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\close-button1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\extra\close-button1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\close-button2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\extra\close-button2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\extra\maximize-button1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\maximize-button1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\extra\maximize-button2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\maximize-button2.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\extra\minimize-button1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\minimize-button1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\popsicle.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="res.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="res\extra\settings-button1.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\temp.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\About.html">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\refresh.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\send.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\send-lock.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\file-send.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="network\File.h">
+      <Filter>Header Files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="network\MessageHeader.h">
+      <Filter>Header Files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="network\netutil.h">
+      <Filter>Header Files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="network\ReceivingManager.h">
+      <Filter>Header Files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="network\SendingManager.h">
+      <Filter>Header Files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="network\TicToc.h">
+      <Filter>Header Files\network</Filter>
+    </ClInclude>
+    <ClInclude Include="FramelessHelper\Kernels\NativeWindowFilter_p.h">
+      <Filter>Header Files\FramelessWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="FramelessHelper\Kernels\NativeWindowHelper_p.h">
+      <Filter>Header Files\FramelessWindow</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="FramelessHelper\FramelessHelper.h">
+      <Filter>Header Files\FramelessWindow</Filter>
+    </QtMoc>
+    <QtMoc Include="FramelessHelper\Kernels\NativeWindowHelper.h">
+      <Filter>Header Files\FramelessWindow</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MainApplication_resource.rc" />
+  </ItemGroup>
+</Project>

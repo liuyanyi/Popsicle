@@ -1,0 +1,15 @@
+﻿QPushButton#closebutton
+{
+    border-image:url(:/icons/icons/navigation/svg/production/ic_cancel_24px.svg);
+}
+// 鼠标悬浮状态下显示的效果
+QPushButton#closebutton:hover
+{
+    background-color:"#e51c23"
+}
+// 鼠标按下状态下显示的效果
+QPushButton#closebutton:pressed
+{
+    background-color:"#b0120a"
+}
+
