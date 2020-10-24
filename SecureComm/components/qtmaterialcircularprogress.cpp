@@ -2,7 +2,7 @@
 #include "qtmaterialcircularprogress_p.h"
 #include <QPropertyAnimation>
 #include <QParallelAnimationGroup>
-#include <QPainter>
+#include <QtGui>
 #include "qtmaterialcircularprogress_internal.h"
 #include "lib/qtmaterialstyle.h"
 

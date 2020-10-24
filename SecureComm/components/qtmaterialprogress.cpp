@@ -1,7 +1,7 @@
 #include "qtmaterialprogress.h"
 #include "qtmaterialprogress_p.h"
 #include <QPropertyAnimation>
-#include <QPainter>
+#include <QtGui>
 #include "qtmaterialprogress_internal.h"
 #include "lib/qtmaterialstyle.h"
 

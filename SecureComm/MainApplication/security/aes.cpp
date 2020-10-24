@@ -304,7 +304,7 @@ void Aes_block_Operator::shiftRows(byteu mtx[row * col]) {
 
 void Aes_block_Operator::inv_shiftRows(byteu mtx[row * col]) {
 	//逆行移位
-
+	
 	int row = 4, col = 4;
 	for (int i = 1; i < 4; i++)
 		row_R(mtx, 4 - i, 4 * i, 4 * i + 3);
