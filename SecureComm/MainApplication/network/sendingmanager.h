@@ -37,6 +37,6 @@ namespace inner_network
 		/// 向指定目标发送数据（加入待发送队列）
 		/// </summary>
 		/// <param name="address"></param>
-		void send(const std::string address, int port, const char* buffer, size_t bufferSize, bool isFile = false);
+		void send(std::string address, int port, const char* buffer, size_t bufferSize, bool isFile = false);
 	};
 }

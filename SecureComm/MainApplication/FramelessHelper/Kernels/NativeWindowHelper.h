@@ -15,10 +15,11 @@ public:
 };
 
 class NativeWindowHelperPrivate;
+
 class NativeWindowHelper : public QObject
 {
-	Q_OBJECT
-		Q_DECLARE_PRIVATE(NativeWindowHelper)
+Q_OBJECT
+	Q_DECLARE_PRIVATE(NativeWindowHelper)
 
 public:
 	NativeWindowHelper(QWindow* window, NativeWindowTester* tester);

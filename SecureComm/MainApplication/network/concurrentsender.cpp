@@ -16,8 +16,8 @@ namespace inner_network
 		* \param isSendingFile 发送的是否是文件
 	*/
 	ConcurrentSender::ConcurrentSender(const char* address, const int port, const char* buffer,
-		const size_t bufferSize, bool isSendingFile)
-		:address(address), port(port), bufferSize(bufferSize), _isSendingFile(isSendingFile)
+	                                   const size_t bufferSize, bool isSendingFile)
+		: bufferSize(bufferSize), address(address), port(port), _isSendingFile(isSendingFile)
 	{
 		this->buffer = new char[bufferSize];
 
@@ -66,9 +66,9 @@ namespace inner_network
 		serAddr.sin_family = AF_INET;
 		serAddr.sin_port = htons(this->port);
 		//IP地址转换，将“点分十进制”转化为“二进制整数”
-		inet_pton(AF_INET, this->address.c_str(), (void*) & (serAddr.sin_addr));
+		inet_pton(AF_INET, this->address.c_str(), static_cast<void*>(&(serAddr.sin_addr)));
 		//判断请求连接是否成功，则返回0，否则返回错误码。
-		if (connect(sclient, (sockaddr*)& serAddr, sizeof(serAddr)) == SOCKET_ERROR)
+		if (connect(sclient, (sockaddr*)&serAddr, sizeof(serAddr)) == SOCKET_ERROR)
 		{
 			return false;
 		}

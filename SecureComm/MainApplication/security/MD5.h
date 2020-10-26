@@ -32,20 +32,20 @@
 #define H(x, y, z) ((x) ^ (y) ^ (z))
 #define I(x, y, z) ((y) ^ ((x) | (~z)))
 
- /**
-  * @Rotate Left.
-  *
-  * @param {num} the raw number.
-  *
-  * @param {n} rotate left n.
-  *
-  * @return the number after rotated left.
-  */
+/**
+ * @Rotate Left.
+ *
+ * @param {num} the raw number.
+ *
+ * @param {n} rotate left n.
+ *
+ * @return the number after rotated left.
+ */
 #define ROTATELEFT(num, n) (((num) << (n)) | ((num) >> (32-(n))))
 
-  /**
-   * @Transformations for rounds 1, 2, 3, and 4.
-   */
+/**
+ * @Transformations for rounds 1, 2, 3, and 4.
+ */
 #define FF(a, b, c, d, x, s, ac) { \
   (a) += F ((b), (c), (d)) + (x) + ac; \
   (a) = ROTATELEFT ((a), (s)); \
@@ -77,7 +77,8 @@ typedef unsigned char bytem;
 /* Define of bytem. */
 typedef unsigned int bit32;
 
-class MD5 {
+class MD5
+{
 public:
 	/* Construct a MD5 object with a string. */
 	MD5(const string& message);

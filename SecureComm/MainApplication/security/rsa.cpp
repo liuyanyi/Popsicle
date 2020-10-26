@@ -10,7 +10,7 @@
 //using namespace std;
 
 //生成两个大素数
-mpz_t * gen_primes()
+mpz_t* gen_primes()
 {
 	gmp_randstate_t grt;
 	gmp_randinit_default(grt);
@@ -21,13 +21,13 @@ mpz_t * gen_primes()
 	mpz_init(key_q);
 
 	mpz_urandomb(key_p, grt, KEY_LENGTH / 2);
-	mpz_urandomb(key_q, grt, KEY_LENGTH / 2);	//随机生成两个大整数
+	mpz_urandomb(key_q, grt, KEY_LENGTH / 2); //随机生成两个大整数
 
 	mpz_t* result = new mpz_t[2];
 	mpz_init(result[0]);
 	mpz_init(result[1]);
 
-	mpz_nextprime(result[0], key_p);  //使用GMP自带的素数生成函数
+	mpz_nextprime(result[0], key_p); //使用GMP自带的素数生成函数
 	mpz_nextprime(result[1], key_q);
 
 	mpz_clear(key_p);
@@ -44,16 +44,16 @@ key_pair* gen_key_pair()
 	mpz_t key_n, key_e, key_f;
 	mpz_init(key_n);
 	mpz_init(key_f);
-	mpz_init_set_ui(key_e, 65537);	//设置e为65537
+	mpz_init_set_ui(key_e, 65537); //设置e为65537
 
-	mpz_mul(key_n, primes[0], primes[1]);		//计算n=p*q
-	mpz_sub_ui(primes[0], primes[0], 1);		//p=p-1
-	mpz_sub_ui(primes[1], primes[1], 1);		//q=q-1
-	mpz_mul(key_f, primes[0], primes[1]);		//计算欧拉函数φ(n)=(p-1)*(q-1)
+	mpz_mul(key_n, primes[0], primes[1]); //计算n=p*q
+	mpz_sub_ui(primes[0], primes[0], 1); //p=p-1
+	mpz_sub_ui(primes[1], primes[1], 1); //q=q-1
+	mpz_mul(key_f, primes[0], primes[1]); //计算欧拉函数φ(n)=(p-1)*(q-1)
 
 	mpz_t key_d;
 	mpz_init(key_d);
-	mpz_invert(key_d, key_e, key_f);   //计算数论倒数
+	mpz_invert(key_d, key_e, key_f); //计算数论倒数
 
 	key_pair* result = new key_pair;
 
@@ -75,7 +75,7 @@ key_pair* gen_key_pair()
 	result->d_length = bd.size();
 	result->e_length = be.size();
 
-	mpz_clear(primes[0]);   //释放内存
+	mpz_clear(primes[0]); //释放内存
 	mpz_clear(primes[1]);
 	mpz_clear(key_n);
 	mpz_clear(key_d);
@@ -95,7 +95,7 @@ char* encrypt(const char* plain_text, const char* key_n, const char* key_e)
 	mpz_init_set_str(e, key_e, BASE);
 	mpz_init_set_ui(C, 0);
 
-	mpz_powm(C, M, e, n);    //使用GMP中模幂计算函数
+	mpz_powm(C, M, e, n); //使用GMP中模幂计算函数
 
 	char* result = new char[KEY_LENGTH + 10];
 	mpz_get_str(result, BASE, C);
@@ -112,7 +112,7 @@ char* decrypt(const char* cipher_text, const char* key_n, const char* key_d)
 	mpz_init_set_str(d, key_d, BASE);
 	mpz_init(M);
 
-	mpz_powm(M, C, d, n);   //使用GMP中的模幂计算函数
+	mpz_powm(M, C, d, n); //使用GMP中的模幂计算函数
 
 	char* result = new char[KEY_LENGTH + 10];
 	mpz_get_str(result, BASE, M);

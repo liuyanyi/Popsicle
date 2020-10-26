@@ -12,9 +12,9 @@ typedef std::bitset<8> byteu;
 typedef std::bitset<32> word;
 
 constexpr auto RSA_KEY_NAME = "rsa.key";
-constexpr auto DH_KEY_NAME = "dh.key";    //输入输出的数字进制;
+constexpr auto DH_KEY_NAME = "dh.key"; //输入输出的数字进制;
 
-constexpr auto BASE = 16;    //输入输出的数字进制;
+constexpr auto BASE = 16; //输入输出的数字进制;
 
 struct key_pair
 {

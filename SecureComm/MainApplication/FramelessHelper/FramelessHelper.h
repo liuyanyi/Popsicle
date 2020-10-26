@@ -4,10 +4,11 @@
 #include <QWidget>
 
 class FramelessHelperPrivate;
+
 class FramelessHelper : public QObject
 {
-	Q_OBJECT
-		Q_DECLARE_PRIVATE(FramelessHelper)
+Q_OBJECT
+	Q_DECLARE_PRIVATE(FramelessHelper)
 
 public:
 	explicit FramelessHelper(QWidget* parent = nullptr);

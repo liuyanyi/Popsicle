@@ -24,21 +24,25 @@ using std::hex;
 
 static const string base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-static inline bool is_base64(unsigned char c) {
+static inline bool is_base64(unsigned char c)
+{
 	return (isalnum(c) || (c == '+') || (c == '/'));
 }
 
 // Base64部分
-string Util::base64_encode(char const* bytes_to_encode, unsigned int in_len) {
+string Util::base64_encode(char const* bytes_to_encode, unsigned int in_len)
+{
 	string ret;
 	int i = 0;
 	int j = 0;
 	unsigned char char_array_3[3];
 	unsigned char char_array_4[4];
 
-	while (in_len--) {
+	while (in_len--)
+	{
 		char_array_3[i++] = *(bytes_to_encode++);
-		if (i == 3) {
+		if (i == 3)
+		{
 			char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
 			char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
 			char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
@@ -69,7 +73,8 @@ string Util::base64_encode(char const* bytes_to_encode, unsigned int in_len) {
 	return ret;
 }
 
-string Util::base64_decode(string const& encoded_string) {
+string Util::base64_decode(string const& encoded_string)
+{
 	size_t in_len = encoded_string.size();
 	int i = 0;
 	int j = 0;
@@ -77,9 +82,12 @@ string Util::base64_decode(string const& encoded_string) {
 	unsigned char char_array_4[4], char_array_3[3];
 	string ret;
 
-	while (in_len-- && (encoded_string[in_] != '=') && is_base64(encoded_string[in_])) {
-		char_array_4[i++] = encoded_string[in_]; in_++;
-		if (i == 4) {
+	while (in_len-- && (encoded_string[in_] != '=') && is_base64(encoded_string[in_]))
+	{
+		char_array_4[i++] = encoded_string[in_];
+		in_++;
+		if (i == 4)
+		{
 			for (i = 0; i < 4; i++)
 				char_array_4[i] = base64_chars.find(char_array_4[i]) & 0xff;
 
@@ -93,7 +101,8 @@ string Util::base64_decode(string const& encoded_string) {
 		}
 	}
 
-	if (i) {
+	if (i)
+	{
 		for (j = 0; j < i; j++)
 			char_array_4[j] = base64_chars.find(char_array_4[j]) & 0xff;
 
@@ -106,17 +115,20 @@ string Util::base64_decode(string const& encoded_string) {
 	return ret;
 }
 
-string Util::hexstring_encode_to_base64(const string& hex, int length) {
+string Util::hexstring_encode_to_base64(const string& hex, int length)
+{
 	std::vector<char> array;
 	array.reserve(length / 2 + 1);
 	//char* array = new char[length];
 
-	for (int i = 0; i < length / 2; i++) {
+	for (int i = 0; i < length / 2; i++)
+	{
 		int sss = char_to_int(hex[2 * i]) * 16 + char_to_int(hex[2 * i + 1]);
 		//cout << endl << sss << endl;
 		array.push_back(sss);
 	}
-	for (int i = 0; i < length / 2; i++) {
+	for (int i = 0; i < length / 2; i++)
+	{
 		//cout << endl << endl << int(array[i]) << endl << endl;
 	}
 	string en = base64_encode(&array[0], hex.size() / 2);
@@ -124,7 +136,8 @@ string Util::hexstring_encode_to_base64(const string& hex, int length) {
 	return en;
 }
 
-string Util::base64_decode_to_hexstring(string const& encoded_string) {
+string Util::base64_decode_to_hexstring(string const& encoded_string)
+{
 	size_t in_len = encoded_string.size();
 	int i = 0;
 	int j = 0;
@@ -133,9 +146,12 @@ string Util::base64_decode_to_hexstring(string const& encoded_string) {
 	string ret;
 	//std::vector<char> arr;
 
-	while (in_len-- && (encoded_string[in_] != '=') && is_base64(encoded_string[in_])) {
-		char_array_4[i++] = encoded_string[in_]; in_++;
-		if (i == 4) {
+	while (in_len-- && (encoded_string[in_] != '=') && is_base64(encoded_string[in_]))
+	{
+		char_array_4[i++] = encoded_string[in_];
+		in_++;
+		if (i == 4)
+		{
 			for (i = 0; i < 4; i++)
 				char_array_4[i] = base64_chars.find(char_array_4[i]) & 0xff;
 
@@ -149,7 +165,8 @@ string Util::base64_decode_to_hexstring(string const& encoded_string) {
 		}
 	}
 
-	if (i) {
+	if (i)
+	{
 		for (j = 0; j < i; j++)
 			char_array_4[j] = base64_chars.find(char_array_4[j]) & 0xff;
 
@@ -164,7 +181,8 @@ string Util::base64_decode_to_hexstring(string const& encoded_string) {
 }
 
 // 十六进制字符处理
-string Util::int_to_hexstring(const int x) {
+string Util::int_to_hexstring(const int x)
+{
 	char c[3];
 	c[0] = int_to_char(x / 16);
 	c[1] = int_to_char(x % 16);
@@ -200,23 +218,29 @@ int Util::hexstring_to_int(string hex)
 	return char_to_int(hex[1]) + char_to_int(hex[0]) * 16;
 }
 
-char Util::int_to_char(const int i) {
+char Util::int_to_char(const int i)
+{
 	int c;
-	if (i >= 10) {
+	if (i >= 10)
+	{
 		c = i + 87;
 	}
-	else {
+	else
+	{
 		c = i + 48;
 	}
-	return char(c);
+	return static_cast<char>(c);
 }
 
-int Util::char_to_int(const char c) {
+int Util::char_to_int(const char c)
+{
 	int i;
-	if (c >= 'A') {
+	if (c >= 'A')
+	{
 		i = c - 87;
 	}
-	else {
+	else
+	{
 		i = c - 48;
 	}
 	return i;
@@ -224,7 +248,8 @@ int Util::char_to_int(const char c) {
 
 // Byte处理
 // key2String16
-string Util::byte_to_string(byteu mtx[]) {
+string Util::byte_to_string(byteu mtx[])
+{
 	string s = "";
 	char ss[17];
 	int length = 16;
@@ -238,7 +263,8 @@ string Util::byte_to_string(byteu mtx[]) {
 }
 
 //string2key
-void Util::string_to_byte(string string, byteu mtx[]) {
+void Util::string_to_byte(string string, byteu mtx[])
+{
 	//必须传长为16的string
 	for (int i = 0; i < 16; i++)
 		mtx[i] = 0;
@@ -249,7 +275,8 @@ void Util::string_to_byte(string string, byteu mtx[]) {
 }
 
 //byte2String16
-string Util::byte_to_hex_string(byteu mtx[]) {
+string Util::byte_to_hex_string(byteu mtx[])
+{
 	string s = "";
 	char ss[33];
 	int length = 16;
@@ -266,34 +293,43 @@ string Util::byte_to_hex_string(byteu mtx[]) {
 }
 
 //string2byte16
-void Util::hex_string_to_byte(string string, byteu mtx[]) {
-	for (int i = 0; i < 16; i++) {
+void Util::hex_string_to_byte(string string, byteu mtx[])
+{
+	for (int i = 0; i < 16; i++)
+	{
 		int temp1 = char_to_int(string[2 * i]) * 16 + char_to_int(string[2 * i + 1]);
 		mtx[i] = byteu(temp1);
 	}
 }
 
 // AES填充
-string Util::padding16(string s) {
+string Util::padding16(string s)
+{
 	//扩成16
 	int pad;
-	if (s == "") {
+	if (s == "")
+	{
 		string ss = "";
-		for (int i = 0; i < 16; i++) {
+		for (int i = 0; i < 16; i++)
+		{
 			ss += 16;
 		}
 
 		return ss;
 	}
-	else if (s.size() <= 16) {
+	if (s.size() <= 16)
+	{
 		pad = 16 - s.size();
 	}
-	else {
+	else
+	{
 		pad = 16 - s.size() % 16;
 	}
 
-	if (pad == 0) {
-		for (int i = 0; i < 16; i++) {
+	if (pad == 0)
+	{
+		for (int i = 0; i < 16; i++)
+		{
 			s += 16;
 		}
 		return s;
@@ -305,11 +341,13 @@ string Util::padding16(string s) {
 	return s;
 }
 
-string Util::unpadding16(string s) {
+string Util::unpadding16(string s)
+{
 	//解扩
 	char last = s[s.size() - 1];
 	//cout << (int)last;
-	if (last == 16 && s.size() == 16) {
+	if (last == 16 && s.size() == 16)
+	{
 		return "";
 	}
 	return s.substr(0, s.size() - last);
@@ -380,8 +418,10 @@ key_pair* Util::get_rsa_key(string key_storage_path)
 	string res = binary_in_to_hexstring(&key);
 	long length = res.size();
 	string siz = res.substr(0, 8);
-	unsigned long l = char_to_int(siz[0]) * 0x10000000 + char_to_int(siz[1]) * 0x1000000 + char_to_int(siz[2]) * 0x100000 + char_to_int(siz[3]) * 0x10000
-		+ char_to_int(siz[4]) * 0x1000 + char_to_int(siz[5]) * 0x100 + char_to_int(siz[6]) * 0x10 + char_to_int(siz[7]) * 0x1;
+	unsigned long l = char_to_int(siz[0]) * 0x10000000 + char_to_int(siz[1]) * 0x1000000 + char_to_int(siz[2]) *
+		0x100000 + char_to_int(siz[3]) * 0x10000
+		+ char_to_int(siz[4]) * 0x1000 + char_to_int(siz[5]) * 0x100 + char_to_int(siz[6]) * 0x10 + char_to_int(siz[7])
+		* 0x1;
 	string veri = res.substr(8, l);
 	if (veri != "525341")
 		return nullptr;
@@ -390,8 +430,10 @@ key_pair* Util::get_rsa_key(string key_storage_path)
 	{
 		siz = res.substr(tt, 8);
 
-		l = char_to_int(siz[0]) * 0x10000000 + char_to_int(siz[1]) * 0x1000000 + char_to_int(siz[2]) * 0x100000 + char_to_int(siz[3]) * 0x10000
-			+ char_to_int(siz[4]) * 0x1000 + char_to_int(siz[5]) * 0x100 + char_to_int(siz[6]) * 0x10 + char_to_int(siz[7]) * 0x1;
+		l = char_to_int(siz[0]) * 0x10000000 + char_to_int(siz[1]) * 0x1000000 + char_to_int(siz[2]) * 0x100000 +
+			char_to_int(siz[3]) * 0x10000
+			+ char_to_int(siz[4]) * 0x1000 + char_to_int(siz[5]) * 0x100 + char_to_int(siz[6]) * 0x10 +
+			char_to_int(siz[7]) * 0x1;
 		v.push_back(std::to_string(l));
 		if (l % 2 == 1)
 			tt++;
@@ -455,7 +497,8 @@ string Util::binary_in_to_hexstring(ifstream* ifs)
 string Util::binary_in_to_hexstring(ifstream* ifs, int length)
 {
 	stringstream ss;
-	for (int i = 0; i < length && ifs->peek() != EOF; i++) {
+	for (int i = 0; i < length && ifs->peek() != EOF; i++)
+	{
 		int c = 0;
 		ifs->read(reinterpret_cast<char*>(&c), 1);
 
@@ -516,18 +559,18 @@ mpz_t* Util::dh_gen_prime()
 {
 	gmp_randstate_t grt;
 	gmp_randinit_default(grt);
-	gmp_randseed_ui(grt, time(NULL));
+	gmp_randseed_ui(grt, time(nullptr));
 
 	mpz_t key_p;
 	mpz_init(key_p);
 
-	mpz_urandomb(key_p, grt, 512);	//随机生成一个大整数
+	mpz_urandomb(key_p, grt, 512); //随机生成一个大整数
 
 	mpz_t* result = new mpz_t[1];
 	//mpz_t result;
 	mpz_init(result[0]);
 
-	mpz_nextprime(result[0], key_p);  //使用GMP自带的素数生成函数
+	mpz_nextprime(result[0], key_p); //使用GMP自带的素数生成函数
 
 	mpz_clear(key_p);
 
@@ -548,7 +591,7 @@ mpz_t* Util::dh_gen_bigint()
 	mpz_t* key_p = new mpz_t[1];
 	mpz_init(key_p[0]);
 
-	mpz_urandomb(key_p[0], grt, 128);	//随机生成一个大整数
+	mpz_urandomb(key_p[0], grt, 128); //随机生成一个大整数
 	//Sleep(1000);
 	return key_p;
 }
@@ -562,7 +605,7 @@ mpz_t* Util::dh_gen_yk(const char* ya, const char* xa, const char* p)
 	mpz_init_set_str(pm, p, BASE);
 	mpz_init_set_ui(result[0], 0);
 
-	mpz_powm(result[0], yam, xam, pm);    //使用GMP中模幂计算函数
+	mpz_powm(result[0], yam, xam, pm); //使用GMP中模幂计算函数
 
 	//char* result = new char[KEY_LENGTH + 10];
 	//mpz_get_str(result, BASE, C);
@@ -627,8 +670,10 @@ dh_key* Util::get_dh_key(string key_storage_path)
 	string res = binary_in_to_hexstring(&key);
 	long length = res.size();
 	string siz = res.substr(0, 8);
-	unsigned long l = char_to_int(siz[0]) * 0x10000000 + char_to_int(siz[1]) * 0x1000000 + char_to_int(siz[2]) * 0x100000 + char_to_int(siz[3]) * 0x10000
-		+ char_to_int(siz[4]) * 0x1000 + char_to_int(siz[5]) * 0x100 + char_to_int(siz[6]) * 0x10 + char_to_int(siz[7]) * 0x1;
+	unsigned long l = char_to_int(siz[0]) * 0x10000000 + char_to_int(siz[1]) * 0x1000000 + char_to_int(siz[2]) *
+		0x100000 + char_to_int(siz[3]) * 0x10000
+		+ char_to_int(siz[4]) * 0x1000 + char_to_int(siz[5]) * 0x100 + char_to_int(siz[6]) * 0x10 + char_to_int(siz[7])
+		* 0x1;
 	string veri = res.substr(8, l);
 	if (veri != "4448")
 		return nullptr;
@@ -637,8 +682,10 @@ dh_key* Util::get_dh_key(string key_storage_path)
 	{
 		siz = res.substr(tt, 8);
 
-		l = char_to_int(siz[0]) * 0x10000000 + char_to_int(siz[1]) * 0x1000000 + char_to_int(siz[2]) * 0x100000 + char_to_int(siz[3]) * 0x10000
-			+ char_to_int(siz[4]) * 0x1000 + char_to_int(siz[5]) * 0x100 + char_to_int(siz[6]) * 0x10 + char_to_int(siz[7]) * 0x1;
+		l = char_to_int(siz[0]) * 0x10000000 + char_to_int(siz[1]) * 0x1000000 + char_to_int(siz[2]) * 0x100000 +
+			char_to_int(siz[3]) * 0x10000
+			+ char_to_int(siz[4]) * 0x1000 + char_to_int(siz[5]) * 0x100 + char_to_int(siz[6]) * 0x10 +
+			char_to_int(siz[7]) * 0x1;
 		v.push_back(std::to_string(l));
 		if (l % 2 == 1)
 			tt++;
@@ -676,11 +723,11 @@ dh_key* Util::get_dh_key(string key_storage_path)
 		temp1 = k->n_length + 1;
 	else
 		temp1 = k->n_length;*/
-		/*
-		char* t3 = new char[stoi(v[4]) + 1];
-		strcpy_s(t3, stoi(v[4]) + 1, v[5].c_str());
-		k->n = t3;
-		cout << k->n << endl;
-		*/
+	/*
+	char* t3 = new char[stoi(v[4]) + 1];
+	strcpy_s(t3, stoi(v[4]) + 1, v[5].c_str());
+	k->n = t3;
+	cout << k->n << endl;
+	*/
 	return d;
 }

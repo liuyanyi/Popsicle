@@ -16,7 +16,8 @@
 
 #pragma comment(lib, "ws2_32.lib")
 
-struct History {
+struct History
+{
 	/// <summary>
 	/// 发送者的计算机名
 	/// </summary>
@@ -92,12 +93,14 @@ void SendMessageToIp(const char* message, const char* ip);
 /// 向指定的 ip 群发消息，collection 必须拥有 cbegin 和 cend 方法，每个元素都是一个ip的字符串（c_str）
 /// </summary>
 template <typename COLLECTION>
-void BroadcastMessageToIps(const char* message, const COLLECTION collection) {
+void BroadcastMessageToIps(const char* message, const COLLECTION collection)
+{
 	std::string msg;
 	msg.reserve(strlen(message) + 1); // 留出一位来存放消息类型
 	msg += inner_network::MSG_REGULAR;
 	msg += message;
-	for (auto iter = collection.cbegin(); iter != collection.cend(); ++iter) {
+	for (auto iter = collection.cbegin(); iter != collection.cend(); ++iter)
+	{
 		inner_network::SendingManager::send(*iter, MESSAGE_RECV_PORT, msg.c_str(), msg.size());
 	}
 }

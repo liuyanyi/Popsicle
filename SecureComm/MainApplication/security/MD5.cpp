@@ -1,12 +1,12 @@
 ﻿#include "MD5.h"
 
 /* Define the static member of MD5. */
-const bytem MD5::PADDING[64] = { 0x80 };
+const bytem MD5::PADDING[64] = {0x80};
 const char MD5::HEX_NUMBERS[16] = {
-  '0', '1', '2', '3',
-  '4', '5', '6', '7',
-  '8', '9', 'a', 'b',
-  'c', 'd', 'e', 'f'
+	'0', '1', '2', '3',
+	'4', '5', '6', '7',
+	'8', '9', 'a', 'b',
+	'c', 'd', 'e', 'f'
 };
 
 /**
@@ -15,7 +15,8 @@ const char MD5::HEX_NUMBERS[16] = {
  * @param {message} the message will be transformed.
  *
  */
-MD5::MD5(const string& message) {
+MD5::MD5(const string& message)
+{
 	finished = false;
 	/* Reset number of bits. */
 	count[0] = count[1] = 0;
@@ -35,8 +36,10 @@ MD5::MD5(const string& message) {
  * @return the message-digest.
  *
  */
-const bytem* MD5::getDigest() {
-	if (!finished) {
+const bytem* MD5::getDigest()
+{
+	if (!finished)
+	{
 		finished = true;
 
 		bytem bits[8];
@@ -52,7 +55,7 @@ const bytem* MD5::getDigest() {
 		encode(count, bits, 8);
 
 		/* Pad out to 56 mod 64. */
-		index = (bit32)((count[0] >> 3) & 0x3f);
+		index = static_cast<bit32>((count[0] >> 3) & 0x3f);
 		padLen = (index < 56) ? (56 - index) : (120 - index);
 		init(PADDING, padLen);
 
@@ -78,33 +81,38 @@ const bytem* MD5::getDigest() {
  * @param {len} the number btye of message.
  *
  */
-void MD5::init(const bytem* input, size_t len) {
+void MD5::init(const bytem* input, size_t len)
+{
 	bit32 i, index, partLen;
 
 	finished = false;
 
 	/* Compute number of bytems mod 64 */
-	index = (bit32)((count[0] >> 3) & 0x3f);
+	index = static_cast<bit32>((count[0] >> 3) & 0x3f);
 
 	/* update number of bits */
-	if ((count[0] += ((bit32)len << 3)) < ((bit32)len << 3)) {
+	if ((count[0] += (static_cast<bit32>(len) << 3)) < (static_cast<bit32>(len) << 3))
+	{
 		++count[1];
 	}
-	count[1] += ((bit32)len >> 29);
+	count[1] += (static_cast<bit32>(len) >> 29);
 
 	partLen = 64 - index;
 
 	/* transform as many times as possible. */
-	if (len >= partLen) {
+	if (len >= partLen)
+	{
 		memcpy(&buffer[index], input, partLen);
 		transform(buffer);
 
-		for (i = partLen; i + 63 < len; i += 64) {
+		for (i = partLen; i + 63 < len; i += 64)
+		{
 			transform(&input[i]);
 		}
 		index = 0;
 	}
-	else {
+	else
+	{
 		i = 0;
 	}
 
@@ -117,7 +125,8 @@ void MD5::init(const bytem* input, size_t len) {
  *
  * @param {block} the message block.
  */
-void MD5::transform(const bytem block[64]) {
+void MD5::transform(const bytem block[64])
+{
 	bit32 a = state[0], b = state[1], c = state[2], d = state[3], x[16];
 
 	decode(block, x, 64);
@@ -210,12 +219,14 @@ void MD5::transform(const bytem block[64]) {
 * @param {length} the length of input.
 *
 */
-void MD5::encode(const bit32* input, bytem* output, size_t length) {
-	for (size_t i = 0, j = 0; j < length; ++i, j += 4) {
-		output[j] = (bytem)(input[i] & 0xff);
-		output[j + 1] = (bytem)((input[i] >> 8) & 0xff);
-		output[j + 2] = (bytem)((input[i] >> 16) & 0xff);
-		output[j + 3] = (bytem)((input[i] >> 24) & 0xff);
+void MD5::encode(const bit32* input, bytem* output, size_t length)
+{
+	for (size_t i = 0, j = 0; j < length; ++i, j += 4)
+	{
+		output[j] = static_cast<bytem>(input[i] & 0xff);
+		output[j + 1] = static_cast<bytem>((input[i] >> 8) & 0xff);
+		output[j + 2] = static_cast<bytem>((input[i] >> 16) & 0xff);
+		output[j + 3] = static_cast<bytem>((input[i] >> 24) & 0xff);
 	}
 }
 
@@ -229,10 +240,12 @@ void MD5::encode(const bit32* input, bytem* output, size_t length) {
  * @param {length} the length of input.
  *
  */
-void MD5::decode(const bytem* input, bit32* output, size_t length) {
-	for (size_t i = 0, j = 0; j < length; ++i, j += 4) {
-		output[i] = ((bit32)input[j]) | (((bit32)input[j + 1]) << 8) |
-			(((bit32)input[j + 2]) << 16) | (((bit32)input[j + 3]) << 24);
+void MD5::decode(const bytem* input, bit32* output, size_t length)
+{
+	for (size_t i = 0, j = 0; j < length; ++i, j += 4)
+	{
+		output[i] = static_cast<bit32>(input[j]) | (static_cast<bit32>(input[j + 1]) << 8) |
+			(static_cast<bit32>(input[j + 2]) << 16) | (static_cast<bit32>(input[j + 3]) << 24);
 	}
 }
 
@@ -242,11 +255,13 @@ void MD5::decode(const bytem* input, bit32* output, size_t length) {
  * @return the hex string of digest.
  *
  */
-string MD5::toStr() {
+string MD5::toStr()
+{
 	const bytem* digest_ = getDigest();
 	string str;
 	str.reserve(16 << 1);
-	for (size_t i = 0; i < 16; ++i) {
+	for (size_t i = 0; i < 16; ++i)
+	{
 		int t = digest_[i];
 		int a = t / 16;
 		int b = t % 16;

@@ -8,7 +8,8 @@ const int row = 4, col = 4;
 const int keyLength = 4;
 const int Nr = 10;
 
-class Aes_block_Operator {
+class Aes_block_Operator
+{
 public:
 	//public 加密解密接口
 	void encrypt(byteu in[row * col], byteu keys[row * col]);

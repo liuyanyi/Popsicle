@@ -14,6 +14,6 @@ namespace inner_network
 
 		void startReceivingLoop(SOCKET sListen);
 
-		void initReceivingManager(const int receivingPort);
+		void initReceivingManager(int receivingPort);
 	};
 }

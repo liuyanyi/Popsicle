@@ -27,7 +27,7 @@ public:
 	QMargins priMaximizedMargins;
 public:
 	QSet<QWidget*> extraTitleBars;
-	int             titleBarHeight;
+	int titleBarHeight;
 public:
 	QSet<QWidget*> includeItems;
 	QSet<QWidget*> excludeItems;

@@ -11,19 +11,23 @@ void NativeWindowFilter::deliver(QWindow* window, NativeWindowHelper* helper)
 {
 	Q_CHECK_PTR(window);
 
-	if (!NativeWindowFilterPrivate::instance) {
+	if (!NativeWindowFilterPrivate::instance)
+	{
 		QCoreApplication* appc = QCoreApplication::instance();
-		if (appc) {
+		if (appc)
+		{
 			auto filter = new NativeWindowFilter();
 			NativeWindowFilterPrivate::instance.reset(filter);
 			appc->installNativeEventFilter(filter);
 		}
 	}
 
-	if (helper) {
+	if (helper)
+	{
 		WId newId = window->winId();
 		WId oldId = NativeWindowFilterPrivate::windows.value(helper);
-		if (newId != oldId) {
+		if (newId != oldId)
+		{
 			NativeWindowFilterPrivate::helpers.insert(newId, helper);
 			NativeWindowFilterPrivate::helpers.remove(oldId);
 			NativeWindowFilterPrivate::windows.insert(helper, newId);
@@ -31,7 +35,8 @@ void NativeWindowFilter::deliver(QWindow* window, NativeWindowHelper* helper)
 			NativeWindowFilterPrivate::winIds.insert(window, newId);
 		}
 	}
-	else {
+	else
+	{
 		WId oldId = NativeWindowFilterPrivate::winIds.take(window);
 		NativeWindowHelper* helper = NativeWindowFilterPrivate::helpers.take(oldId);
 		NativeWindowFilterPrivate::windows.remove(helper);
@@ -39,7 +44,7 @@ void NativeWindowFilter::deliver(QWindow* window, NativeWindowHelper* helper)
 }
 
 bool NativeWindowFilter::nativeEventFilter(const QByteArray& eventType,
-	void* message, long* result)
+                                           void* message, long* result)
 {
 	Q_UNUSED(eventType);
 
